@@ -10,6 +10,7 @@ use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -29,7 +30,8 @@ class ProjectController extends Controller
     public function create(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -57,6 +59,7 @@ class ProjectController extends Controller
 
             //dd($val_data);
             $project->create($val_data);
+            $project->technologies()->attach($request->technologies);
 
             return to_route('projects.index', compact('project'))->with('message', 'New Project Created ✅');
         }

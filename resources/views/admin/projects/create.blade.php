@@ -65,6 +65,29 @@
                             @enderror
                         </div>
 
+                        {{-- Mi piace più il list select --}}
+                        {{-- <div class="mb-3">
+                            <label for="technologies" class="form-label">Technologies</label>
+                            <select multiple class="form-select" name="technologies[]" id="technologies">
+                                <option selected disabled>Select one</option>
+                                @foreach ($technologies as $technology)
+                                    <option value="{{ $technology->id }}">{{ $technology->name }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
+
+                        <div class="list-group">
+                            <span class="py-2">Technology</span>
+                            @foreach ($technologies as $technology)
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" name="technologies[]" type="checkbox"
+                                        value="{{ $technology->id }}">
+                                    {{ $technology->name }}
+                                </label>
+                            @endforeach
+
+                        </div>
+
                         <div class="mb-3">
                             <label for="cover_image" class="form-label">Choose file</label>
                             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder=""
