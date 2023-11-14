@@ -18,7 +18,7 @@ class Project extends Model
 
     protected $table = 'projects';
 
-    protected $fillable = ['title', 'description', 'slug', 'cover_image', 'content', 'type_id'];
+    protected $fillable = ['title', 'description', 'slug', 'cover_image', 'content', 'type_id', 'technology_id'];
 
     public function type(): BelongsTo
     {

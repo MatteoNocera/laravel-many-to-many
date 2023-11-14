@@ -45,6 +45,19 @@
                                 <p class="card-text fs-5 py-4 text-white-50">Type: <span class="badge bg-secondary p-2">
                                         {{ $project->type ? $project->type->name : 'None' }}
                                     </span></p>
+
+                                <div class="d-flex gap-1">
+                                    <ul class="d-flex list-untyled">
+                                        @forelse ($project->technologies as $technology)
+                                            <li class="badge bg-secondary">
+                                                <i class="fas fa-tag fa-xs fa-fw"></i>
+                                                {{ $technology->name }}
+                                            </li>
+                                        @empty
+                                            <li class="badge badge-secondary">No Technology</li>
+                                        @endforelse
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
