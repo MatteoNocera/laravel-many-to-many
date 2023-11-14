@@ -157,6 +157,8 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->find($id);
 
+        $project->technologies()->detach();
+
         $project->forceDelete();
 
         return to_route('admin.trashed')->with('message', 'Total delete succesfully ✅');
