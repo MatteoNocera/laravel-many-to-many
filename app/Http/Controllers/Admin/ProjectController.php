@@ -57,9 +57,14 @@ class ProjectController extends Controller
 
             $val_data['slug'] = Str::slug($request->title, '-');
 
-            //dd($val_data);
-            $project->create($val_data);
+            //dd($request->technologies);
+            $project = Project::create($val_data);
+
+
+
             $project->technologies()->attach($request->technologies);
+
+
 
             return to_route('projects.index', compact('project'))->with('message', 'New Project Created ✅');
         }
@@ -86,7 +91,8 @@ class ProjectController extends Controller
 
         if (Auth::id() === 1) {
             $types = Type::all();
-            return view('admin.projects.edit', compact('project', 'types'));
+            $technologies = Technology::all();
+            return view('admin.projects.edit', compact('project', 'types', 'technologies'));
         }
         abort(403, '😡🤬You don\'t have permissions');
     }

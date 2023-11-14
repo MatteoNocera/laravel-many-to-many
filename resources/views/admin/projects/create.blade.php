@@ -80,13 +80,18 @@
                             <span class="py-2">Technology</span>
                             @foreach ($technologies as $technology)
                                 <label class="list-group-item">
-                                    <input class="form-check-input me-1" name="technologies[]" type="checkbox"
-                                        value="{{ $technology->id }}">
+                                    <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
+                                        name="technologies[]" type="checkbox" id="technologies"
+                                        value="{{ $technology->id }}"
+                                        {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                                     {{ $technology->name }}
                                 </label>
                             @endforeach
 
                         </div>
+                        @error('technologies')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
 
                         <div class="mb-3">
                             <label for="cover_image" class="form-label">Choose file</label>

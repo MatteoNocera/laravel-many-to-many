@@ -61,6 +61,33 @@
                                 class="form-control @error('description') is-invalid @enderror">{{ old('description', $project->description) }}</textarea>
                         </div>
 
+                        <div class="list-group">
+                            <span class="py-2">Technology</span>
+                            @foreach ($technologies as $technology)
+                                @if ($errors->any())
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
+                                            name="technologies[]" type="checkbox" id="technologies"
+                                            value="{{ $technology->id }}"
+                                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                        {{ $technology->name }}
+                                    </label>
+                                @else
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
+                                            name="technologies[]" type="checkbox" id="technologies"
+                                            value="{{ $technology->id }}"
+                                            {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
+                                        {{ $technology->name }}
+                                    </label>
+                                @endif
+                            @endforeach
+
+                        </div>
+                        @error('technologies')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
                         <div class="mb-3">
                             <label for="cover_image" class="form-label">Update Project Image</label>
                             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder=""

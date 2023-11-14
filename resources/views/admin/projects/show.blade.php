@@ -46,8 +46,9 @@
                                         {{ $project->type ? $project->type->name : 'None' }}
                                     </span></p>
 
-                                <div class="d-flex gap-1">
-                                    <ul class="d-flex list-untyled">
+                                <div class="d-flex">
+                                    <span class="text-white-50">Technologies: </span>
+                                    <ul class="d-flex list-untyled gap-1">
                                         @forelse ($project->technologies as $technology)
                                             <li class="badge bg-secondary">
                                                 <i class="fas fa-tag fa-xs fa-fw"></i>
