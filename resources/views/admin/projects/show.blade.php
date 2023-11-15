@@ -55,7 +55,7 @@
                                                 {{ $technology->name }}
                                             </li>
                                         @empty
-                                            <li class="badge badge-secondary">No Technology</li>
+                                            <li class="badge bg-secondary">No Technology</li>
                                         @endforelse
                                     </ul>
                                 </div>

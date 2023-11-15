@@ -15,15 +15,7 @@
 
                     </div>
 
-                    {{-- <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
 
-
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -31,30 +23,48 @@
         <div class="row row-cols-1 row-cols-lg-3 my-5">
             <div class="col">
                 <div class="card shadow h-100">
-                    <div class="card-body bg-dark text-white rounded shadow">
+                    <div class="card-body bg-dark text-white rounded-top">
                         <h4>
                             Total Projects: {{ $total_projects }}
                         </h4>
+                    </div>
+                    <div class="card-footer bg-secondary">
+                        <a class="btn btn-outline-dark m-1" href="{{ route('projects.index') }}">
+                            See All
+                            <i class="fa-regular fa-circle-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="col">
                 <div class="card shadow h-100">
-                    <div class="card-body bg-dark text-white rounded shadow">
+                    <div class="card-body bg-dark text-white rounded-top">
                         <h4>
                             Total Users: {{ $total_users }}
                         </h4>
                     </div>
+                    <div class="card-footer bg-secondary">
+                        <a class="btn btn-outline-dark m-1" href="#">
+                            See All
+                            <i class="fa-regular fa-circle-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="col">
                 <div class="card shadow h-100">
-                    <div class="card-body bg-dark text-white rounded shadow">
+                    <div class="card-body bg-dark text-white rounded-top">
                         <h4>
-                            Total Projects: {{ $total_projects }}
+                            Total Types: {{ $total_types }}
                         </h4>
+                    </div>
+                    <div class="card-footer bg-secondary">
+                        <a class="btn btn-outline-dark m-1" href="{{ route('types.index') }}">
+                            See All
+                            <i class="fa-regular fa-circle-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
