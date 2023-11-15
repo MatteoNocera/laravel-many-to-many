@@ -80,7 +80,7 @@ class ProjectController extends Controller
 
         $trashed_projects = Project::onlyTrashed()->get();
 
-        return view('admin.projects.show', compact('project', 'trashed_projects'));
+        return view('admin.projects.show', ['project', $project], compact('project', 'trashed_projects'));
     }
 
     /**

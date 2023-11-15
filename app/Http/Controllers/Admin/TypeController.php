@@ -51,7 +51,8 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        return view('admin.types.show', compact('type'));
+
+        return view('admin.types.show', ['type' => $type]);
     }
 
     /**
@@ -85,6 +86,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return to_route('admin.types.index')->with('message', 'Delete succesfully ✅');
+        return to_route('types.index')->with('message', 'Delete succesfully ✅');
     }
 }

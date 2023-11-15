@@ -83,7 +83,7 @@
 
                                 <td class="text-center align-middle">
 
-                                    <a href="{{ route('projects.show', $project->id) }}"
+                                    <a href="{{ route('projects.show', $project->slug) }}"
                                         class="btn btn-outline-info mx-4"><i class="fa-solid fa-eye"></i></a>
 
 
