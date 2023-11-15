@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('title', 50);
             $table->string('description')->nullable();
             $table->string('slug');
+            $table->string('git_link')->nullable();
+            $table->string('web_link')->nullable();
 
             $table->timestamps();
         });
