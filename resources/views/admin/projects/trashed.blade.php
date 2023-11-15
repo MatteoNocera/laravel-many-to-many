@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('projects.index') }}">
+        <a class="btn btn-secondary mt-2" href="{{ route('admin.projects.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Back to Projects List
         </a>
 
@@ -119,7 +119,7 @@
 
                             </tr>
                         @empty
-                            <td class="bg-dark">No Trashed Projects yet!!!</td>
+                            <td colspan="5" class="bg-dark">No Trashed Projects yet!!!</td>
                         @endforelse
 
 

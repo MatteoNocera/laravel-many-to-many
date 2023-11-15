@@ -99,7 +99,7 @@
                             <li class="nav-item">
 
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'projects.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('projects.index') }}">
+                                    href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-table-columns fa-lg fa-fw"></i> Projects
                                 </a>
 
@@ -108,7 +108,7 @@
                             <li class="nav-item">
 
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'types.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('types.index') }}">
+                                    href="{{ route('admin.types.index') }}">
                                     <i class="fa-solid fa-table-columns fa-lg fa-fw"></i> Types
                                 </a>
 

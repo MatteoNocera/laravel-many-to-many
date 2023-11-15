@@ -43,7 +43,7 @@ class TypeController extends Controller
 
         Type::create($val_data);
 
-        return to_route('types.index')->with('message', 'Type creation succesfully ✅');
+        return to_route('admin.types.index')->with('message', 'Type creation succesfully ✅');
     }
 
     /**
@@ -76,7 +76,7 @@ class TypeController extends Controller
 
         $type->update($val_data);
 
-        return to_route('types.index', $type)->with('message', 'Update succesfully ✅');
+        return to_route('admin.types.index', $type)->with('message', 'Update succesfully ✅');
     }
 
     /**
@@ -86,6 +86,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return to_route('types.index')->with('message', 'Delete succesfully ✅');
+        return to_route('admin.types.index')->with('message', 'Delete succesfully ✅');
     }
 }

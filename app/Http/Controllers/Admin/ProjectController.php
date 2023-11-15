@@ -66,7 +66,7 @@ class ProjectController extends Controller
 
 
 
-            return to_route('projects.index', compact('project'))->with('message', 'New Project Created ✅');
+            return to_route('admin.projects.index', compact('project'))->with('message', 'New Project Created ✅');
         }
 
         abort(403, '😡🤬You don\'t have permissions');
@@ -135,7 +135,7 @@ class ProjectController extends Controller
         if (Auth::id() === 1) {
             $project->delete();
 
-            return to_route('projects.index')->with('message', 'Delete succesfully ✅');
+            return to_route('admin.projects.index')->with('message', 'Delete succesfully ✅');
         }
 
         abort(403, '😡🤬You don\'t have permissions');
@@ -154,7 +154,7 @@ class ProjectController extends Controller
 
         $project->restore();
 
-        return to_route('projects.index')->with('message', 'Restore succesfully ✅');
+        return to_route('admin.projects.index')->with('message', 'Restore succesfully ✅');
     }
 
     public function forceDelete($id)

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('projects.index') }}">
+        <a class="btn btn-secondary mt-2" href="{{ route('admin.projects.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Back to Projects List
         </a>
 
@@ -48,7 +48,7 @@
 
                                 <div class="d-flex">
                                     <span class="text-white-50">Technologies: </span>
-                                    <ul class="d-flex list-untyled gap-1">
+                                    <ul class="d-flex list-untyled gap-1 ps-2">
                                         @forelse ($project->technologies as $technology)
                                             <li class="badge bg-secondary">
                                                 <i class="fas fa-tag fa-xs fa-fw"></i>
@@ -76,7 +76,7 @@
                         </a>
 
                         {{-- <a href="{{ route('projects.edit', $project) }}" class="btn btn-secondary ms-4">Edit</a> --}}
-                        <a href="{{ route('projects.edit', $project) }}" class="btn btn-outline-dark"><i
+                        <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-dark"><i
                                 class="fa-solid fa-file-pen"></i></a>
 
                         <!-- Modal trigger button -->
@@ -101,7 +101,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body p-5">
-                                        <h4>Do you really want to delete this Project?</h4>
+                                        <h4 class="text-black">Do you really want to delete this Project?</h4>
                                     </div>
 
 
@@ -109,7 +109,7 @@
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
 
-                                        <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
 
                                             @csrf
 

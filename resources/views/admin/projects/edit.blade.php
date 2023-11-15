@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-4">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('projects.index') }}">
+        <a class="btn btn-secondary mt-2" href="{{ route('admin.projects.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Back to Projects List
         </a>
 
@@ -21,7 +21,8 @@
                     @endif
 
 
-                    <form action="{{ route('projects.update', $project) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.projects.update', $project) }}" method="post"
+                        enctype="multipart/form-data">
 
                         @csrf
                         @method('PUT')
@@ -99,7 +100,7 @@
                             Update
                         </button>
 
-                        <a class="btn btn-secondary" href="{{ route('projects.index') }}">
+                        <a class="btn btn-secondary" href="{{ route('admin.projects.index') }}">
                             Cancel
                         </a>
 

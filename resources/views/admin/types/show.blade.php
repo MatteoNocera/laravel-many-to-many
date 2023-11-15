@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('types.index') }}">
+        <a class="btn btn-secondary mt-2" href="{{ route('admin.types.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Back to Projects List
         </a>
 
@@ -31,7 +31,7 @@
                     <div class="card-footer d-flex justify-content-end bg-secondary bg-gradient align-items-center gap-4">
 
 
-                        <a href="{{ route('types.edit', $type) }}" class="btn btn-outline-dark"><i
+                        <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-outline-dark"><i
                                 class="fa-solid fa-file-pen"></i></a>
 
                         <!-- Modal trigger button -->
@@ -56,7 +56,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body p-5">
-                                        <h4>Do you really want to delete this Type?</h4>
+                                        <h4 class="text-black">Do you really want to delete this Type?</h4>
                                     </div>
 
 
@@ -64,7 +64,7 @@
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
 
-                                        <form action="{{ route('types.destroy', $type->id) }}" method="POST">
+                                        <form action="{{ route('admin.types.destroy', $type->slug) }}" method="POST">
 
                                             @csrf
 

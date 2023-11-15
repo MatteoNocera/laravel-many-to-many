@@ -30,12 +30,14 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::get('/restore/{id}', [ProjectController::class, 'restore'])->name('restore');
 
     Route::delete('/forceDelete/{id}', [ProjectController::class, 'forceDelete'])->name('forceDelete');
+
+
+    Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+
+    Route::resource('/types', TypeController::class)->parameters(['types' => 'type:slug']);
 });
 
 
-Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
-
-Route::resource('/types', TypeController::class)->parameters(['types' => 'type:slug']);
 
 
 Route::middleware('auth')->group(function () {

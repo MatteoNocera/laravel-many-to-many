@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('projects.index') }}">
+        <a class="btn btn-secondary mt-2" href="{{ route('admin.projects.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Back to Projects List
         </a>
 
@@ -21,7 +21,7 @@
 
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
 
                         @csrf
 

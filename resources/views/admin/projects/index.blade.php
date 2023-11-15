@@ -11,7 +11,7 @@
             <h2 class="my-5 display-3 fw-bold text-muted">My Projects</h1>
 
                 <div class="d-flex align-items-center gap-2">
-                    <a class="btn btn-outline-primary " href="{{ route('projects.create') }}">➕ Add project</a>
+                    <a class="btn btn-outline-primary " href="{{ route('admin.projects.create') }}">➕ Add project</a>
                     <a class="btn btn-outline-danger " href="{{ route('admin.trashed') }}">🗑 See Trashed
                         Projects</a>
                 </div>
@@ -78,11 +78,11 @@
 
                                 <td class="text-center align-middle">
 
-                                    <a href="{{ route('projects.show', $project->slug) }}"
+                                    <a href="{{ route('admin.projects.show', $project->slug) }}"
                                         class="btn btn-outline-info mx-4"><i class="fa-solid fa-eye"></i></a>
 
 
-                                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-outline-dark"><i
+                                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-dark"><i
                                             class="fa-solid fa-file-pen"></i></a>
 
                                     <!-- Modal trigger button -->
@@ -112,7 +112,7 @@
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
 
-                                                    <form action="{{ route('projects.destroy', $project->id) }}"
+                                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}"
                                                         method="POST">
 
                                                         @csrf

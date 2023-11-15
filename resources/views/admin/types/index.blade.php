@@ -11,7 +11,7 @@
             <h2 class="my-5 display-3 fw-bold text-muted">My Types</h1>
 
                 <div class="d-flex align-items-center gap-2">
-                    <a class="btn btn-outline-primary " href="{{ route('types.create') }}">➕ Add Type</a>
+                    <a class="btn btn-outline-primary " href="{{ route('admin.types.create') }}">➕ Add Type</a>
                     {{-- <a class="btn btn-outline-danger " href="{{ route('types.trashed') }}">🗑 See Trashed
                         Types</a> --}}
                 </div>
@@ -50,11 +50,11 @@
 
                                 <td class="text-center align-middle">
 
-                                    <a href="{{ route('types.show', $type->slug) }}" class="btn btn-outline-info mx-4"><i
-                                            class="fa-solid fa-eye"></i></a>
+                                    <a href="{{ route('admin.types.show', $type->slug) }}"
+                                        class="btn btn-outline-info mx-4"><i class="fa-solid fa-eye"></i></a>
 
 
-                                    <a href="{{ route('types.edit', $type) }}" class="btn btn-outline-dark"><i
+                                    <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-outline-dark"><i
                                             class="fa-solid fa-file-pen"></i></a>
 
                                     <!-- Modal trigger button -->
@@ -84,7 +84,8 @@
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
 
-                                                    <form action="{{ route('types.destroy', $type->slug) }}" method="POST">
+                                                    <form action="{{ route('admin.types.destroy', $type->slug) }}"
+                                                        method="POST">
 
                                                         @csrf
 
