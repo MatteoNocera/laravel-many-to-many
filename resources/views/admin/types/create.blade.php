@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
 
-        <a class="btn btn-secondary mt-2" href="{{ route('projects.index') }}">
-            <i class="fa-solid fa-arrow-left"></i> Back to Projects List
+        <a class="btn btn-secondary mt-2" href="{{ route('types.index') }}">
+            <i class="fa-solid fa-arrow-left"></i> Back to Types List
         </a>
 
-        <h2 class="my-5 display-3 fw-bold text-muted">Create New Project</h1>
+        <h2 class="my-5 display-3 fw-bold text-muted">Create New Type</h1>
 
             @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
@@ -21,87 +21,21 @@
 
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('types.store') }}" method="POST" enctype="multipart/form-data">
 
                         @csrf
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" @error('title') is-invalid @enderror name="title"
-                                id="title" aria-describedby="help_title" placeholder="Type new project title here"
-                                value="{{ old('title', $project->title) }}">
-                            <small id="help_title" class="form-text text-muted">Type max 50 characters</small>
-                            @error('title')
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" @error('name') is-invalid @enderror name="name"
+                                id="name" aria-describedby="help_name" placeholder="Type new type name here"
+                                value="{{ old('name', $type->name) }}">
+                            <small id="help_name" class="form-text text-muted">Type max 50 characters</small>
+                            @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="type_id" class="form-label">Types</label>
-                            <select class="form-select" name="type_id" id="type_id">
-                                <option selected disabled>Select a type</option>
-                                <option value="">None</option>
-
-                                @forelse ($types as $type)
-                                    <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
-                                        {{ $type->name }}</option>
-                                @empty
-                                @endforelse
-
-                            </select>
-                        </div>
-                        @error('type_id')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" @error('description') is-invalid @enderror
-                                name="description" id="description" aria-describedby="help_description"
-                                placeholder="Type new project description here"value="{{ old('description', $project->description) }}">
-                            <small id="help_description" class="form-text text-muted">Type max 50 characters</small>
-                            @error('description')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        {{-- Mi piace più il list select --}}
-                        {{-- <div class="mb-3">
-                            <label for="technologies" class="form-label">Technologies</label>
-                            <select multiple class="form-select" name="technologies[]" id="technologies">
-                                <option selected disabled>Select one</option>
-                                @foreach ($technologies as $technology)
-                                    <option value="{{ $technology->id }}">{{ $technology->name }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
-
-                        <div class="list-group">
-                            <span class="py-2">Technology</span>
-                            @foreach ($technologies as $technology)
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
-                                        name="technologies[]" type="checkbox" id="technologies"
-                                        value="{{ $technology->id }}"
-                                        {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
-                                    {{ $technology->name }}
-                                </label>
-                            @endforeach
-
-                        </div>
-                        @error('technologies')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="cover_image" class="form-label">Choose file</label>
-                            <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder=""
-                                aria-describedby="fileHelpId">
-                            <div id="fileHelpId" class="form-text">Add an Image, MAX 500kb</div>
-                            @error('cover_image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
 
                         <button class="btn btn-primary" type="submit">Save</button>
 
