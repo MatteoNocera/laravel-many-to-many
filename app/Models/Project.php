@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -28,5 +29,10 @@ class Project extends Model
     public function technologies(): BelongsToMany
     {
         return $this->belongsToMany(Technology::class);
+    }
+
+    public static function generateSlug($title)
+    {
+        return Str::slug($title, '-');
     }
 }

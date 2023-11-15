@@ -55,7 +55,7 @@ class ProjectController extends Controller
                 $val_data['cover_image'] = $cover_image_path;
             }
 
-            $val_data['slug'] = Str::slug($request->title, '-');
+            $val_data['slug'] = Project::generateSlug($val_data['title'], '-');
 
             //dd($request->technologies);
             $project = Project::create($val_data);
@@ -108,6 +108,10 @@ class ProjectController extends Controller
             if ($request->has('cover_image')) {
                 $path = Storage::put('placeholders', $request->cover_image);
                 $val_data['cover_image'] = $path;
+            }
+
+            if (!Str::is($project->getOriginal('title'), $request->title)) {
+                $val_data['slug'] = $project->generateSlug($request->title);
             }
 
             $project->update($val_data);

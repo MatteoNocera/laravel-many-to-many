@@ -105,6 +105,15 @@
 
                             </li>
 
+                            <li class="nav-item">
+
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'types.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('types.index') }}">
+                                    <i class="fa-solid fa-table-columns fa-lg fa-fw"></i> Types
+                                </a>
+
+                            </li>
+
                         </ul>
 
 

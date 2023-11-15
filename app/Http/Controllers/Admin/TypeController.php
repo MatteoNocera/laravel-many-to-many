@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -36,11 +37,13 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        $val_data = $request->validate();
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Type::generateSlug($val_data['name'], '-');
 
         Type::create($val_data);
 
-        return to_route('admin.types.index')->with('message', 'Type creation succesfully ✅');
+        return to_route('types.index')->with('message', 'Type creation succesfully ✅');
     }
 
     /**
@@ -64,11 +67,15 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        $val_data = $request->validate();
+        $val_data = $request->validated();
+
+        if (!Str::is($type->getOriginal('name'), $request->name)) {
+            $val_data['slug'] = $type->generateSlug($request->name);
+        }
 
         $type->update($val_data);
 
-        return to_route('admin.types.index', $type)->with('message', 'Update succesfully ✅');
+        return to_route('types.index', $type)->with('message', 'Update succesfully ✅');
     }
 
     /**
