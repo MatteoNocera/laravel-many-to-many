@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
@@ -24,17 +24,17 @@ class TypeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Type $type)
     {
 
 
-        return view('admin.types.create');
+        return view('admin.types.create', compact('type'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreTypeRequest $request)
     {
         $val_data = $request->validate();
 
@@ -62,7 +62,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Type $type)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
         $val_data = $request->validate();
 
