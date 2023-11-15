@@ -65,13 +65,13 @@
 
                     <div class="card-footer d-flex justify-content-end bg-secondary bg-gradient align-items-center gap-4">
 
-                        <a class="btn btn-outline-dark" href="http://127.0.0.1:8000/projects/{{ $project->id }}"
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="btn btn-outline-dark" href="{{ $project->web_link }}" target="_blank"
+                            rel="noopener noreferrer">
                             <i class="fa-solid fa-link fa-lg"></i>
                         </a>
 
-                        <a class="btn btn-outline-dark" href="https://github.com/MatteoNocera?tab=repositories"
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="btn btn-outline-dark" href="{{ $project->git_link }}" target="_blank"
+                            rel="noopener noreferrer">
                             <i class="fa-brands fa-github fa-lg"></i>
                         </a>
 
@@ -109,7 +109,8 @@
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
 
-                                        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                                        <form action="{{ route('admin.projects.destroy', $project->slug) }}"
+                                            method="POST">
 
                                             @csrf
 

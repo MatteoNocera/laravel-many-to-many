@@ -25,7 +25,7 @@
 
                         @csrf
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" @error('title') is-invalid @enderror name="title"
                                 id="title" aria-describedby="help_title" placeholder="Type new project title here"
@@ -36,7 +36,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="type_id" class="form-label">Types</label>
                             <select class="form-select" name="type_id" id="type_id">
                                 <option selected disabled>Select a type</option>
@@ -54,7 +54,7 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="description" class="form-label">Description</label>
                             <input type="text" class="form-control" @error('description') is-invalid @enderror
                                 name="description" id="description" aria-describedby="help_description"
@@ -65,8 +65,32 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="web_link" class="form-label">Web Link</label>
+                            <input type="text" class="form-control" @error('web_link') is-invalid @enderror
+                                name="web_link" id="web_link" aria-describedby="help_web_link"
+                                placeholder="Type new project web_link here"
+                                value="{{ old('web_link', $project->web_link) }}">
+                            <small id="help_web_link" class="form-text text-muted">Type new web link</small>
+                            @error('web_link')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="git_link" class="form-label">GitHub Link</label>
+                            <input type="text" class="form-control" @error('git_link') is-invalid @enderror
+                                name="git_link" id="git_link" aria-describedby="help_git_link"
+                                placeholder="Type new project git_link here"
+                                value="{{ old('git_link', $project->git_link) }}">
+                            <small id="help_git_link" class="form-text text-muted">Type new GitHub link</small>
+                            @error('git_link')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         {{-- Mi piace più il list select --}}
-                        {{-- <div class="mb-3">
+                        {{-- <div class="mb-4">
                             <label for="technologies" class="form-label">Technologies</label>
                             <select multiple class="form-select" name="technologies[]" id="technologies">
                                 <option selected disabled>Select one</option>
@@ -93,7 +117,7 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="cover_image" class="form-label">Choose file</label>
                             <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder=""
                                 aria-describedby="fileHelpId">

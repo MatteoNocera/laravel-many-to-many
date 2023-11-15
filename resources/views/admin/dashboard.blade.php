@@ -93,8 +93,8 @@
 
                         </div>
                         <div class="card-footer bg-secondary">
-                            <a class="btn btn-outline-dark m-1" href="http://127.0.0.1:8000/projects/{{ $project->id }}"
-                                target="_blank" rel="noopener noreferrer">
+                            <a class="btn btn-outline-dark m-1" href="{{ $project->web_link }}" target="_blank"
+                                rel="noopener noreferrer">
                                 <i class="fa-solid fa-link fa-lg"></i>
                             </a>
                         </div>

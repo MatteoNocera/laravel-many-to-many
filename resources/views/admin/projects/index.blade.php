@@ -64,13 +64,11 @@
                                 <td class="col-4 text-center align-middle">{{ $project->title }}</td>
 
                                 <td class="col-2 align-middle">
-                                    <a class="btn btn-outline-dark m-1"
-                                        href="https://github.com/MatteoNocera?tab=repositories" target="_blank"
+                                    <a class="btn btn-outline-dark m-1" href="{{ $project->git_link }}" target="_blank"
                                         rel="noopener noreferrer">
                                         <i class="fa-brands fa-github fa-lg"></i>
                                     </a>
-                                    <a class="btn btn-outline-dark m-1"
-                                        href="http://127.0.0.1:8000/projects/{{ $project->id }}" target="_blank"
+                                    <a class="btn btn-outline-dark m-1" href="{{ $project->web_link }}" target="_blank"
                                         rel="noopener noreferrer">
                                         <i class="fa-solid fa-link fa-lg"></i>
                                     </a>
