@@ -39,37 +39,34 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        if (Auth::id() === 1) {
 
-            $project = new Project();
 
-            $val_data = $request->validated();
+        $project = new Project();
 
-            if ($request->has('cover_image')) {
+        $val_data = $request->validated();
 
-                $cover_image_path = Storage::put('placeholders', $request->cover_image);
+        if ($request->has('cover_image')) {
 
-                /* if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+            $cover_image_path = Storage::put('placeholders', $request->cover_image);
+
+            /* if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
                     Storage::delete($project->cover_image);
                 } */
-                $val_data['cover_image'] = $cover_image_path;
-            }
-
-            $val_data['slug'] = Project::generateSlug($val_data['title'], '-');
-
-            //dd($request->technologies);
-            $project = Project::create($val_data);
-
-
-
-            $project->technologies()->attach($request->technologies);
-
-
-
-            return to_route('admin.projects.index', compact('project'))->with('message', 'New Project Created ✅');
+            $val_data['cover_image'] = $cover_image_path;
         }
 
-        abort(403, '😡🤬You don\'t have permissions');
+        $val_data['slug'] = Project::generateSlug($val_data['title'], '-');
+
+        //dd($request->technologies);
+        $project = Project::create($val_data);
+
+
+
+        $project->technologies()->attach($request->technologies);
+
+
+
+        return to_route('admin.projects.index', compact('project'))->with('message', 'New Project Created ✅');
     }
 
     /**
@@ -89,14 +86,12 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
 
-        if (Auth::id() === 1) {
 
-            $types = Type::all();
 
-            $technologies = Technology::all();
-            return view('admin.projects.edit', compact('project', 'types', 'technologies'));
-        }
-        abort(403, '😡🤬You don\'t have permissions');
+        $types = Type::all();
+
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -105,32 +100,29 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
 
-        if (Auth::id() === 1) {
-            $val_data = $request->validated();
 
-            if ($request->has('cover_image')) {
-                $path = Storage::put('placeholders', $request->cover_image);
+        $val_data = $request->validated();
 
-                if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
-                    Storage::delete($project->cover_image);
-                }
+        if ($request->has('cover_image')) {
+            $path = Storage::put('placeholders', $request->cover_image);
 
-                $val_data['cover_image'] = $path;
+            if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+                Storage::delete($project->cover_image);
             }
 
-
-
-
-            if (!Str::is($project->getOriginal('title'), $request->title)) {
-                $val_data['slug'] = $project->generateSlug($request->title);
-            }
-
-            $project->update($val_data);
-
-            return to_route('admin.projects.index')->with('message', 'Project updated successfully ✅');
+            $val_data['cover_image'] = $path;
         }
 
-        abort(403, '😡🤬You don\'t have permissions');
+
+
+
+        if (!Str::is($project->getOriginal('title'), $request->title)) {
+            $val_data['slug'] = $project->generateSlug($request->title);
+        }
+
+        $project->update($val_data);
+
+        return to_route('admin.projects.index')->with('message', 'Project updated successfully ✅');
     }
 
     /**
@@ -143,13 +135,10 @@ class ProjectController extends Controller
             Storage::delete($project->cover_image);
         } */
 
-        if (Auth::id() === 1) {
-            $project->delete();
 
-            return to_route('admin.projects.index')->with('message', 'Delete succesfully ✅');
-        }
+        $project->delete();
 
-        abort(403, '😡🤬You don\'t have permissions');
+        return to_route('admin.projects.index')->with('message', 'Delete succesfully ✅');
     }
 
     public function trashed()
