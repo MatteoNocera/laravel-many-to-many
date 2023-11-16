@@ -98,18 +98,27 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'projects.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-solid fa-table-columns fa-lg fa-fw"></i> Projects
+                                    <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> Projects
                                 </a>
 
                             </li>
 
                             <li class="nav-item">
 
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'types.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.types.index') }}">
                                     <i class="fa-solid fa-table-columns fa-lg fa-fw"></i> Types
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-solid fa-microchip fa-lg fa-fw"></i> Technologies
                                 </a>
 
                             </li>
