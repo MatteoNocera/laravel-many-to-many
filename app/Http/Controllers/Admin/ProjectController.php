@@ -135,9 +135,9 @@ class ProjectController extends Controller
             Storage::delete($project->cover_image);
         } */
 
-
-        $project->delete();
-
+        if (Auth::id() === 1) {
+            $project->delete();
+        }
         return to_route('admin.projects.index')->with('message', 'Delete succesfully ✅');
     }
 
@@ -150,10 +150,11 @@ class ProjectController extends Controller
 
     public function restore($id)
     {
-        $project = Project::onlyTrashed()->find($id);
+        if (Auth::id() === 1) {
+            $project = Project::onlyTrashed()->find($id);
 
-        $project->restore();
-
+            $project->restore();
+        }
         return to_route('admin.projects.index')->with('message', 'Restore succesfully ✅');
     }
 
@@ -161,13 +162,16 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->find($id);
 
-        $project->technologies()->detach();
+        if (Auth::id() === 1) {
+            # code...
+            $project->technologies()->detach();
 
-        if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
-            Storage::delete($project->cover_image);
-        };
+            if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+                Storage::delete($project->cover_image);
+            };
 
-        $project->forceDelete();
+            $project->forceDelete();
+        }
 
         return to_route('admin.trashed')->with('message', 'Total delete succesfully ✅');
     }
