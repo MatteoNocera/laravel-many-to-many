@@ -28,7 +28,7 @@
 
                             <th scope="col">Title</th>
 
-                            {{-- <th scope="col">Project technologies count</th> --}}
+                            <th scope="col">Project technologies count</th>
 
                             <th scope="col" class="text-center">Actions</th>
                         </tr>
@@ -43,7 +43,7 @@
 
                                 <td class="col-4 text-center align-middle">{{ $technology->name }}</td>
 
-                                {{-- <td class="col-4 text-center align-middle">{{ $technology->projects->count() }}</td> --}}
+                                <td class="col-4 text-center align-middle">{{ $technology->projects->count() }}</td>
 
 
                                 <td class="text-center align-middle">

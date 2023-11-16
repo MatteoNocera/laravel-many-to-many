@@ -93,7 +93,7 @@
                                 @if ($errors->any())
                                     <label class="list-group-item">
                                         <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
-                                            name="technologies[]" type="checkbox" id="technologies"
+                                            name="technologies[]" type="checkbox" id="technologies{{ $technology->id }}"
                                             value="{{ $technology->id }}"
                                             {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                                         {{ $technology->name }}

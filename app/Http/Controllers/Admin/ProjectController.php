@@ -100,8 +100,13 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
 
+        //dd($request);
+
+
 
         $val_data = $request->validated();
+
+        //dd($val_data);
 
         if ($request->has('cover_image')) {
             $path = Storage::put('placeholders', $request->cover_image);
@@ -121,6 +126,8 @@ class ProjectController extends Controller
         }
 
         $project->update($val_data);
+
+        $project->technologies()->sync($request->technologies);
 
         return to_route('admin.projects.index')->with('message', 'Project updated successfully ✅');
     }
