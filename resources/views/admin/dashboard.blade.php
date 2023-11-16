@@ -76,7 +76,7 @@
         <div class="row row-cols-1 row-cols-lg-3 mt-1 g-4 my-4">
             @foreach ($projects as $project)
                 <div class="col">
-                    <div class="card shadow text-center bg-dark text-white h-100">
+                    <div class="card text-center bg-dark text-white h-100 shadow border-0">
                         <div class="card-header bg-secondary text-black">
                             Project #{{ $project->id }}
                         </div>

@@ -87,8 +87,8 @@
                             @enderror
                         </div>
 
-                        <div class="list-group">
-                            <span class="py-2">Technology</span>
+                        <span class="py-2">Technology</span>
+                        <div class="list-group mb-4 overflow-y-auto" style="max-height: 200px">
                             @foreach ($technologies as $technology)
                                 @if ($errors->any())
                                     <label class="list-group-item">
@@ -101,7 +101,7 @@
                                 @else
                                     <label class="list-group-item">
                                         <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
-                                            name="technologies[]" type="checkbox" id="technologies"
+                                            name="technologies[]" type="checkbox" id="technologies{{ $technology->id }}"
                                             value="{{ $technology->id }}"
                                             {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
                                         {{ $technology->name }}

@@ -100,12 +100,12 @@
                             </select>
                         </div> --}}
 
-                        <div class="list-group">
-                            <span class="py-2">Technology</span>
+                        <span class="py-2">Technology</span>
+                        <div class="list-group mb-4 overflow-y-auto" style="max-height: 200px">
                             @foreach ($technologies as $technology)
                                 <label class="list-group-item">
                                     <input class="form-check-input me-1 @error('technologies') is-invalid @enderror"
-                                        name="technologies[]" type="checkbox" id="technologies"
+                                        name="technologies[]" type="checkbox" id="technologies{{ $technology->id }}"
                                         value="{{ $technology->id }}"
                                         {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                                     {{ $technology->name }}
