@@ -18,19 +18,13 @@
                     <div class="row g-0 p-4">
                         <div class="col-lg-5 text-center py-2">
 
-                            @if ($project->cover_image)
-                                {{-- <img width="300" src="{{ asset('storage/placeholders' . $project->cover_image) }}"
-                                        alt=""> --}}
-                                <img class="img-fluid rounded-2"
-                                    src="https://picsum.photos/400/400?random={{ $project->id }}">
+
+                            @if (str_contains($project->cover_image, 'http'))
+                                <img class="img-fluid rounded-2" src="{{ asset($project->cover_image) }}" alt="">
                             @else
-                                N/A
+                                <img class="img-fluid rounded-2" src="{{ asset('storage/' . $project->cover_image) }}"
+                                    alt="">
                             @endif
-                            {{-- @if (str_contains($project->cover_image, 'http'))
-                                <img class="img-fluid rounded-start" src="{{ $project->cover_image }}" alt="">
-                            @else
-                                N/A
-                            @endif --}}
 
                         </div>
                         <div class="col-lg-7">

@@ -46,19 +46,13 @@
 
 
                                 <td class="text-center align-middle">
-                                    @if ($project->cover_image)
-                                        {{-- <img width="60" src="{{ asset('storage/' . $project->cover_image) }}"
-                                            alt=""> --}}
-                                        <img class="img-fluid"
-                                            src="https://picsum.photos/100/100?random={{ $project->id }}">
+                                    @if (str_contains($project->cover_image, 'http'))
+                                        <img width="100" src="{{ asset($project->cover_image) }}" alt="">
                                     @else
-                                        N/A
+                                        <img width="100" src="{{ asset('storage/' . $project->cover_image) }}"
+                                            alt="">
                                     @endif
-                                    {{-- @if (str_contains($project->cover_image, 'http'))
-                                        <img width="60" src="{{ $project->cover_image }}" alt="">
-                                    @else
-                                        N/A
-                                    @endif --}}
+
                                 </td>
 
                                 <td class="col-4 text-center align-middle">{{ $project->title }}</td>

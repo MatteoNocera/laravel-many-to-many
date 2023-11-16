@@ -49,9 +49,9 @@ class ProjectController extends Controller
 
                 $cover_image_path = Storage::put('placeholders', $request->cover_image);
 
-                if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+                /* if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
                     Storage::delete($project->cover_image);
-                }
+                } */
                 $val_data['cover_image'] = $cover_image_path;
             }
 
@@ -90,7 +90,9 @@ class ProjectController extends Controller
     {
 
         if (Auth::id() === 1) {
+
             $types = Type::all();
+
             $technologies = Technology::all();
             return view('admin.projects.edit', compact('project', 'types', 'technologies'));
         }
@@ -105,10 +107,19 @@ class ProjectController extends Controller
 
         if (Auth::id() === 1) {
             $val_data = $request->validated();
+
             if ($request->has('cover_image')) {
                 $path = Storage::put('placeholders', $request->cover_image);
+
+                if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+                    Storage::delete($project->cover_image);
+                }
+
                 $val_data['cover_image'] = $path;
             }
+
+
+
 
             if (!Str::is($project->getOriginal('title'), $request->title)) {
                 $val_data['slug'] = $project->generateSlug($request->title);
@@ -116,7 +127,7 @@ class ProjectController extends Controller
 
             $project->update($val_data);
 
-            return to_route('projects.index')->with('message', 'Project updated successfully ✅');
+            return to_route('admin.projects.index')->with('message', 'Project updated successfully ✅');
         }
 
         abort(403, '😡🤬You don\'t have permissions');
@@ -162,6 +173,10 @@ class ProjectController extends Controller
         $project = Project::onlyTrashed()->find($id);
 
         $project->technologies()->detach();
+
+        if (!is_null($project->cover_image) && Storage::fileExists($project->cover_image)) {
+            Storage::delete($project->cover_image);
+        };
 
         $project->forceDelete();
 
